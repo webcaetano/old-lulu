@@ -11,6 +11,7 @@
 	</strong>
 </p>
 
+#### Status: `Not released yet!`
 
 ## Installation
 
