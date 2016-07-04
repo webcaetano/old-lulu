@@ -1,12 +1,12 @@
-![filesize](https://badge-size.herokuapp.com/webcaetano/phaser-gui/master/build/gui.min.js.svg?style=flat-square)
-![Bower version](https://img.shields.io/bower/v/phaser-gui.svg?style=flat-square)
+![filesize](https://badge-size.herokuapp.com/webcaetano/lulu/master/build/gui.min.js.svg?style=flat-square)
+![Bower version](https://img.shields.io/bower/v/phaser-lulu.svg?style=flat-square)
 
-<h1 align="center"> Phaser-GUI </h1>
+<h1 align="center"> Lulu </h1>
 
 <p align="center">
 	<strong>
 		<sub>
-		Phaser GUI developer tools
+		Phaser GUI developer tool
 		</sub>
 	</strong>
 </p>
@@ -15,10 +15,10 @@
 ## Installation
 
 ```
-bower install phaser-gui --save
-```
-
+bower install phaser-lulu --save
 ```
 
 #### See Also
+- [**phaser-craft**](https://github.com/webcaetano/craft)
 - [**phaser-boilerplate**](https://github.com/webcaetano/phaser-boilerplate)
+- [**phaser-utils**](https://github.com/webcaetano/phaser-utils)

@@ -4,8 +4,8 @@ var Phaser = require('phaser');
 // var browser = browserDetection();
 var rootScope = {
 	options:{
-		width:800,
-		height:600,
+		width:600,
+		height:400,
 		where:'master-canvas'
 	},
 	debug:false // make sure set it to false when release

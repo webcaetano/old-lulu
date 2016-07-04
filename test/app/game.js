@@ -32,11 +32,11 @@ module.exports = function(game,rootScope){
 		switch(params.example){
 			default :
 			case '1':
-				require('./example1')(game,scope,rootScope);
+				require('./examples/pointer')(game,scope,rootScope);
 			break;
-			// case '2':
-			// 	require('./example2')(game,scope,rootScope);
-			// break;
+			case '2':
+				require('./examples/ajust')(game,scope,rootScope);
+			break;
 			// case 'test':
 			// 	require('./test')(game,scope,rootScope);
 			// break;
