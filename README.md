@@ -11,13 +11,19 @@
 	</strong>
 </p>
 
-#### Status: `Not released yet!`
-
 ## Installation
 
 ```
 bower install phaser-lulu --save
 ```
+
+## Examples
+
+TBD
+
+## Usage
+ 
+TBD
 
 #### See Also
 - [**phaser-craft**](https://github.com/webcaetano/craft)
