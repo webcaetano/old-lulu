@@ -21,5 +21,5 @@ bower install phaser-lulu --save
 
 #### See Also
 - [**phaser-craft**](https://github.com/webcaetano/craft)
-- [**phaser-boilerplate**](https://github.com/webcaetano/phaser-boilerplate)
 - [**phaser-utils**](https://github.com/webcaetano/phaser-utils)
+- [**phaser-boilerplate**](https://github.com/webcaetano/phaser-boilerplate)

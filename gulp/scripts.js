@@ -2,25 +2,13 @@
 
 var gulp = require('gulp');
 var browserSync = require('browser-sync');
+var gutil = require('gulp-util');
 var fs = require('fs');
-var webpack = require('webpack');
-var runSequence = require('run-sequence');
-var $ = require('gulp-load-plugins')();
+var $ = require('gulp-load-plugins')();;
 
-var gulpWebpack = require('webpack-stream');
 
 module.exports = function(options) {
-
-	gulp.task('include', function () {
-		return gulp.src(options.tmp + '/serve/app/index.js',{path:'src/'})
-		.pipe($.include())
-		.pipe(gulp.dest(options.tmp + '/serve/app/'));
-	});
-
-	function wp(dependent, umd, src, dist, watch, callback, reload) {
-		if(!callback) callback = null;
-		if(!reload) reload = null;
-
+	function wp(umd, src, dist, watch, callback=null, reload=null) {
 		var webpackOptions = {
 			watch: watch,
 			module: {
@@ -31,9 +19,11 @@ module.exports = function(options) {
 				]
 			},
 			plugins: [
-				new webpack.DefinePlugin({
-					WEBPACK_DEPENDENT:dependent
-				})
+				function(){
+					this.plugin("done", function(stats){
+						if (stats.compilation.errors && stats.compilation.errors.length)gutil.beep();
+					});
+				}
 			],
 			externals: JSON.parse(fs.readFileSync('./bower.json','utf8')).externals,
 			output: { filename: 'index.js' }
@@ -41,30 +31,25 @@ module.exports = function(options) {
 
 		if(umd){
 			webpackOptions.output = {
-				library:'phaserGui',
+				library:'lulu',
 				filename: 'index.js',
 				libraryTarget:'umd'
 			}
 		}
 
-		if(watch) {
-			webpackOptions.devtool = 'inline-source-map';
-		}
+		if(watch) webpackOptions.devtool = 'inline-source-map';
 
 		var webpackChangeHandler = function(err, stats) {
 			if(err) {
-				options.errorHandler('Webpack')(err);
+				options.errorHandler('WEBPACK')(err);
 			}
 			$.util.log(stats.toString({
 				colors: $.util.colors.supportsColor,
 				chunks: false,
 				hash: false,
-				version: true
+				version: false
 			}));
-			// browserSync.reload();
-			if(reload) {
-				browserSync.reload();
-			}
+			if(reload) browserSync.reload();
 			if(watch) {
 				watch = false;
 				callback();
@@ -72,33 +57,24 @@ module.exports = function(options) {
 		};
 
 		return gulp.src(src)
-		.pipe(gulpWebpack(webpackOptions, null, webpackChangeHandler))
-		.on('error', function handleError() {
-			this.emit('end'); // Recover from errors
-		})
-		.pipe(gulp.dest(dist));
-
-
+			.pipe($.webpack(webpackOptions, null, webpackChangeHandler))
+			.pipe(gulp.dest(dist))
 	}
 
 	gulp.task('scripts', function () {
-		return wp(false, true, options.src + '/index.js',options.tmp + '/serve/app', false);
-	});
-
-	gulp.task('scripts:dependent', function () {
-		return wp(true, true, options.src + '/index.js',options.tmp + '/serve/app', false);
+		return wp(true, options.src + '/index.js',options.tmp + '/serve/app', false);
 	});
 
 	gulp.task('scripts:watch', function (callback) {
-		return wp(false, true, options.src + '/index.js',options.tmp + '/serve/app', true, callback, true);
+		return wp(true, options.src + '/index.js',options.tmp + '/serve/app', true, callback, true);
 	});
 
 	gulp.task('scripts:test', function () {
-		return wp(false, false, 'test/app/index.js',options.tmp + '/serve/test', false);
+		return wp(false, 'test/app/index.js',options.tmp + '/serve/test', false);
 	});
 
 	gulp.task('scripts:test:watch', function (callback) {
-		return wp(false, false, 'test/app/index.js',options.tmp + '/serve/test', true, callback, true);
+		return wp(false, 'test/app/index.js',options.tmp + '/serve/test', true, callback, true);
 	});
 };
 

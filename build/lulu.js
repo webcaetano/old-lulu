@@ -4,9 +4,9 @@
 	else if(typeof define === 'function' && define.amd)
 		define(["_"], factory);
 	else if(typeof exports === 'object')
-		exports["phaserGui"] = factory(require("_"));
+		exports["lulu"] = factory(require("_"));
 	else
-		root["phaserGui"] = factory(root["_"]);
+		root["lulu"] = factory(root["_"]);
 })(this, function(__WEBPACK_EXTERNAL_MODULE_1__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -236,6 +236,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			return folder;
 		};
+
+		return self;
 	};
 
 /***/ },

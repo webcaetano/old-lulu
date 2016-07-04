@@ -1,18 +1,19 @@
 {
 	"name": "phaser-craft",
 	"version": "1.1.0",
-	"dependencies": {},
+	"dependencies": {
+		"lodash": "~4.11.1"
+	},
 	"devDependencies": {
-		"phaser": "~2.4.3",
+		"phaser": "2.4.7",
 		"stats.js": "*",
-		"lodash": "~4.11.1",
 		"dat-gui": "git@github.com:webcaetano/dat.gui.git#53762381014f91f5d22c10515dbdec85a425c04c"
 	},
 	"main": "build/gui.js",
 	"externals": {
 		"phaser": "Phaser",
 		"craft": "$craft",
-		"phaser-gui": "phaserGui",
+		"lulu": "lulu",
 		"lodash": "_",
 		"stats": "Stats"
 	},
