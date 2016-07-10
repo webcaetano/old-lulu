@@ -4,6 +4,10 @@
 <h1 align="center"> Lulu </h1>
 
 <p align="center">
+<img src="http://i.imgur.com/GDqMsDI.png">
+</p>
+
+<p align="center">
 	<strong>
 		<sub>
 		Phaser GUI developer tool
