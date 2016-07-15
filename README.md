@@ -1,4 +1,4 @@
-![filesize](https://badge-size.herokuapp.com/webcaetano/lulu/master/build/gui.min.js.svg?style=flat-square)
+![filesize](https://badge-size.herokuapp.com/webcaetano/lulu/master/build/lulu.min.js.svg?style=flat-square)
 ![Bower version](https://img.shields.io/bower/v/phaser-lulu.svg?style=flat-square)
 
 <h1 align="center"> Lulu </h1>
